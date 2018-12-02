@@ -15,7 +15,7 @@ install(TARGETS debug-draw
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
 
-install(FILE include/debug_draw.hpp DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+install(FILES include/debug_draw.hpp DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 install(EXPORT debug-draw-targets
   FILE
