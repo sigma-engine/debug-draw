@@ -4,7 +4,10 @@ project(debug-draw VERSION 2.0.0 LANGUAGES CXX)
 add_library(debug-draw debug_draw.cpp)
 add_library(debug-draw::debug-draw ALIAS debug-draw)
 
-target_include_directories(debug-draw PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
+target_include_directories(debug-draw PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+    $<INSTALL_INTERFACE:include>
+)
 
 include(GNUInstallDirs)
 set(INSTALL_CONFIGDIR ${CMAKE_INSTALL_LIBDIR}/cmake/debug-draw)
@@ -15,7 +18,7 @@ install(TARGETS debug-draw
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
 
-install(FILES include/debug_draw.hpp DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+install(FILES debug_draw.hpp DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 install(EXPORT debug-draw-targets
   FILE
